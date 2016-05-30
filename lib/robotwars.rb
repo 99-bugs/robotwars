@@ -1,5 +1,10 @@
 require "robotwars/version"
+require "robotwars/game_window"
 
 module Robotwars
-  # Your code goes here...
+	class Game
+		def initialize
+				game = GameWindow.new
+		end
+	end
 end

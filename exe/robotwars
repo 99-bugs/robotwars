@@ -2,4 +2,6 @@
 
 require "robotwars"
 
-Robotwars::Game.new
+include Robotwars
+Game.setup
+Game.start

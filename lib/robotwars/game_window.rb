@@ -1,23 +1,18 @@
 require 'gosu'
-require "robotwars/logger"
-require "robotwars/game_screen"
 
 module Robotwars
 	class GameWindow < Gosu::Window
-		def initialize
-			super 1600, 900
+		def initialize width = 1600, height = 900
+			super width, height
 			self.caption = "Robotwars"
-			Robotwars::log.debug "GameWindow created"
-
-			@screen = GameScreen.new
 		end
 
 		def update
-			@screen.update
+			Game.scene.update
 		end
 
 		def draw
-			@screen.draw
+			Game.scene.draw
 		end
 	end
 end

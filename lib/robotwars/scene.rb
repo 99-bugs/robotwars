@@ -1,9 +1,7 @@
-require "robotwars/map"
-require "robotwars/robot"
 require "geometry"
 
 module Robotwars
-	class GameScreen
+	class Scene
 		include Robotwars
 		def initialize
 			Robotwars::log.debug "create new GameScreen"
@@ -22,4 +20,3 @@ module Robotwars
 		end
 	end
 end
-

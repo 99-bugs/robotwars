@@ -6,7 +6,7 @@ module Robotwars
 	class Game
 		def initialize
 				Robotwars::log.info "Starting new game"
-				game = GameWindow.new
+				game = Robotwars::GameWindow.new
 				game.show
 		end
 	end

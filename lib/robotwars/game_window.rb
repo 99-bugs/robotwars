@@ -3,8 +3,8 @@ require "robotwars"
 
 class GameWindow < Gosu::Window
 	def initialize
-		super 640, 480
-		self.caption = "Gosu Tutorial Game"
+		super 1600, 900
+		self.caption = "Robotwars"
 		Robotwars::log.debug "GameWindow created"
 	end
 

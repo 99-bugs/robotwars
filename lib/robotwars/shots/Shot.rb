@@ -1,5 +1,4 @@
-require "./lib/GeometryHelper"
-require "geometry"
+
 
 
 class Shot
@@ -14,6 +13,7 @@ class Shot
         @power = power.to_f
         @range = range.to_f
         @damage = 0
+        @speed = 3.0
 
         @position = owner.position
         @heading = owner.heading

@@ -10,6 +10,9 @@ require "robotwars/maze"
 require "robotwars/battleground"
 require "robotwars/ranking"
 
+require "robotwars/shots/shot"
+require "robotwars/shots/rocket"
+
 module Robotwars
 	class Game
 		class << self

@@ -3,9 +3,12 @@ require "geometry"
 module Robotwars
 	class Scene
 		include Robotwars
+
+		attr_accessor :rockets
 		def initialize
 			Robotwars::log.debug "create new GameScreen"
 			@robots = create_robots
+			@rockets = Array.new
 			@battleground = Battleground.new
 			@ranking = Ranking.new @robots
 		end
@@ -18,6 +21,9 @@ module Robotwars
 			robot.right if Game::game_window.button_down? 79
 			@battleground.update
 			@ranking.update
+			@rockets.each do |rocket|
+				rocket.update
+			end
 		end
 
 		def draw
@@ -26,6 +32,9 @@ module Robotwars
 					@battleground.draw
 					@robots.each do |robot|
 						robot.draw
+					end
+					@rockets.each do |rocket|
+						rocket.draw
 					end
 				end
 			end
@@ -37,18 +46,19 @@ module Robotwars
 		end
 
 		def receive_input input
-			puts input
+			robot = @robots.first
+			robot.shoot if input == Gosu::KbSpace
 		end
 
 		def create_robots
 			robots = Array.new
-			robot = Robot.new
+			robot = Robot.new "lkj", self
 			robot.update_position Geometry::Point[100,100], 0
 			robots << robot
-			robot = Robot.new
+			robot = Robot.new "lkj", self
 			robot.update_position Geometry::Point[300,100], 0
 			robots << robot
-			robot = Robot.new
+			robot = Robot.new "lkj", self
 			robot.update_position Geometry::Point[500,500], 0
 			robots << robot
 			robots

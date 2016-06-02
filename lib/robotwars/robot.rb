@@ -33,15 +33,15 @@ class Robot
 	end
 
     def shoot type = "rocket"
-        if @lastshot + 5.0 < DateTime.now
+        if @lastshot + Rational(5, 86400) < DateTime.now
+            puts "SHOOT!!"
             rocket = Shot.create type, self
             unless rocket.nil?
                 @shotsFired += 1
                 @lastshot = DateTime.now
-                return @damage += rocket.damage
+                @world.rockets << rocket
             end
         end
-        0
     end
 
     def hit! shot

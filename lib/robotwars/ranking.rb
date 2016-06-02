@@ -2,7 +2,7 @@
 module Robotwars
     class Ranking
 
-        def initialize
+        def initialize robots
 
         end
 
@@ -11,7 +11,7 @@ module Robotwars
         end
 
         def draw
-
+            Gosu::draw_rect(0, 0, 1600, 100, Gosu::Color::BLUE)
         end
     end
 end

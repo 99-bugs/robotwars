@@ -5,8 +5,9 @@ module Robotwars
 		include Robotwars
 		def initialize
 			Robotwars::log.debug "create new GameScreen"
+			@robots = Array.new
 			@battleground = Battleground.new
-			@ranking = Ranking.new
+			@ranking = Ranking.new @robots
 		end
 
 		def update
@@ -20,8 +21,8 @@ module Robotwars
 					@battleground.draw
 				end
 			end
-			Gosu::clip_to(0,0,1600,100) do
-				Gosu::translate 16,16 do
+			Gosu::translate 0,800 do
+				Gosu::clip_to(0,0,1600,100) do
 					@ranking.draw
 				end
 			end

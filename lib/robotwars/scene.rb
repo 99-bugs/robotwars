@@ -11,6 +11,11 @@ module Robotwars
 		end
 
 		def update
+			robot = @robots.first
+			robot.forward if Game::game_window.button_down? 82
+			robot.reverse if Game::game_window.button_down? 81
+			robot.left if Game::game_window.button_down? 80
+			robot.right if Game::game_window.button_down? 79
 			@battleground.update
 			@ranking.update
 		end
@@ -31,13 +36,17 @@ module Robotwars
 			end
 		end
 
+		def receive_input input
+			puts input
+		end
+
 		def create_robots
 			robots = Array.new
 			robot = Robot.new
-			robot.update_position Geometry::Point[100,100], 45
+			robot.update_position Geometry::Point[100,100], 0
 			robots << robot
 			robot = Robot.new
-			robot.update_position Geometry::Point[300,100], 45
+			robot.update_position Geometry::Point[300,100], 0
 			robots << robot
 			robot = Robot.new
 			robot.update_position Geometry::Point[500,500], 0

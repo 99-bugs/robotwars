@@ -14,5 +14,14 @@ module Robotwars
 		def draw
 			Game.scene.draw
 		end
+
+		def button_down id
+			Game.input_manager.button_down id
+		end
+
+		def receive_input input
+	      close if input == Gosu::KbEscape
+	      Game.scene.receive_input input
+	    end
 	end
 end

@@ -12,10 +12,13 @@ class Robot
 
     attr_reader :health, :size, :world, :name, :position, :heading, :shotsFired, :damage
 
+    TURN_SPEED = 0.05
+
     def initialize name = "Unnamed Robot", world = nil
         @world = world
         @name = name
         @size = 120 / 2 #radius = diameter / 2
+        @speed = 1.0
         reset
         update_position Point[0,0], 0
         @lastshot = DateTime.now - 10
@@ -24,8 +27,9 @@ class Robot
     end
 
 	def draw
-		@image.draw_rot @position.x, @position.y, 1, @heading, 0.5, 0.5, 0.7, 0.7
-        @barrel.draw_rot @position.x, @position.y, 10, @heading, 0.5, 0.5, 0.7, 0.7
+        heading = (@heading / Math::PI * 180) + 90
+		@image.draw_rot @position.x, @position.y, 1, heading, 0.5, 0.5, 0.7, 0.7
+        @barrel.draw_rot @position.x, @position.y, 10, heading, 0.5, 0.5, 0.7, 0.7
 	end
 
     def shoot type = "rocket"
@@ -45,6 +49,26 @@ class Robot
         @health -= shot.power
         @health = [@health, 0].max
         damage = health - @health
+    end
+
+    def forward
+        x = @position.x + @speed * Math::cos(@heading)
+        y = @position.y + @speed * Math::sin(@heading)
+        @position = Point[x,y]
+    end
+
+    def reverse
+        x = @position.x - @speed * Math::cos(@heading)
+        y = @position.y - @speed * Math::sin(@heading)
+        @position = Point[x,y]
+    end
+
+    def left
+        @heading = @heading - TURN_SPEED
+    end
+
+    def right
+        @heading = @heading + TURN_SPEED
     end
 
     def update_position position, heading = nil

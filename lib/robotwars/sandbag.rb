@@ -11,7 +11,7 @@ class Sandbag
     end
 
     def draw
-        @image.draw_rot @position.x, @position.y, 1, @heading, 0.5, 0.5, (32 / @image.height).to_f , (32 / @image.width).to_f
+        @image.draw_rot @position.x, @position.y, 0, @heading, 0.5, 0.5, (32 / @image.height).to_f , (32 / @image.width).to_f
     end
 
 end

@@ -4,8 +4,6 @@ module Robotwars
 
         def initialize
             @map = Map.new
-            @robot = Robot.new
-            @robot.update_position Geometry::Point[100,100], 45
             @sandbags = Array.new
 
             @maze = Maze.new
@@ -17,7 +15,7 @@ module Robotwars
                     dx = start.x + (48 * i * Math::cos(angle))
                     dy = start.y + (48 * i * Math::sin(angle))
                     #puts dx, dy
-                    @sandbags << Sandbag.new( start.x * 128 + dx, start.y * 128 + dy , angle / Math::PI * 180)
+                    @sandbags << Sandbag.new(16 + start.x * 128 + dx, 16 + start.y * 128 + dy , angle / Math::PI * 180)
                 end
             end
         end
@@ -28,7 +26,6 @@ module Robotwars
 
         def draw
             @map.draw
-            @robot.draw
             @sandbags.each do |sandbag|
                 sandbag.draw
             end

@@ -7,6 +7,8 @@ require "robotwars/map"
 require "robotwars/robot"
 require "robotwars/sandbag"
 require "robotwars/maze"
+require "robotwars/battleground"
+require "robotwars/ranking"
 
 module Robotwars
 	class Game

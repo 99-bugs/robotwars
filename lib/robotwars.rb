@@ -5,6 +5,8 @@ require "robotwars/input_manager"
 require "robotwars/scene"
 require "robotwars/map"
 require "robotwars/robot"
+require "robotwars/sandbag"
+require "robotwars/maze"
 
 module Robotwars
 	class Game

@@ -5,6 +5,7 @@ class Rocket < Shot
   def initialize owner, range = 1000.0, power = 25.0
       super owner, range, power
       @image = Gosu::Image.new "assets/images/Bullets/bulletBlue.png"
+      owner.world.rockets << Explosion.new(@position)
   end
 
   def update

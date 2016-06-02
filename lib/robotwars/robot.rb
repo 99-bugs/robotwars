@@ -10,8 +10,9 @@ class Robot
     include Geometry
  #   include RemoteControl
 
-    attr_reader :health, :size, :world, :name, :position, :heading, :shotsFired, :damage
-
+    attr_reader :health, :size, :name, :position, :heading, :shotsFired, :damage
+    attr_accessor :world
+    
     TURN_SPEED = 0.05
 
     def initialize name = "Unnamed Robot", world = nil

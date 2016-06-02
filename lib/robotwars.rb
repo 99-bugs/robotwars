@@ -12,6 +12,7 @@ require "robotwars/ranking"
 
 require "robotwars/shots/shot"
 require "robotwars/shots/rocket"
+require "robotwars/explosion"
 
 module Robotwars
 	class Game
